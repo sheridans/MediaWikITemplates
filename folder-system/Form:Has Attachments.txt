@@ -1,0 +1,42 @@
+<noinclude>
+* This is the "Has Attachments" form. 
+</noinclude><includeonly>{{#vardefine:PagePrefix|{{Mediawiki:zSitePrefix}}{{PAGEID}}-}}
+{{{for template|Has Attachments}}}
+{{#ifexist:{{FULLPAGENAME}}
+| <big>Attachments: '''[{{canonicalurl:{{FULLPAGENAME}} }} {{FULLPAGENAME}}]'''</big>
+----
+This page has {{#ifeq:{{#ask:[[Category:Uploads]][[~*{{#var:PagePrefix}}*]]|format=count}}|0
+| no attachments 
+| the following {{#ask:[[Category:Uploads]][[~*{{#var:PagePrefix}}*]]|format=count}} attachments:
+{{#ask:[[Category:Uploads]][[~*{{#var:PagePrefix}}*]]
+  |?Has file size
+  |?Creation date
+  |?Modification date
+  |?Page author
+  |?MIME Type
+  |?Page creator
+  |?Has Description
+  |?Number of revisions
+  |?Has file ext
+  |format=template
+  |template=PagePrefix - Result Row
+  |introtemplate=PagePrefix - Result Top
+  |outrotemplate=PagePrefix - Result Bot
+  |userparam={{#var:PagePrefix}}
+  |link=none
+  |limit=200
+}}
+}}
+----
+Add more attachments to this page using the upload button below: {{#info: Note - In order to avoid duplicate filenames with attachments on other pages, all files uploaded here will be given the prefix <code>{{#var:PagePrefix}}</code>}}
+{{#batchupload:Uploads|+rename= !^({{#var:PagePrefix}}[./+]*)?!iu -->{{#var:PagePrefix}}}} 
+----
+| Page does not exist
+}}
+{{{end template}}}
+{{#css:
+.firstHeading { display:none; visibility:hidden; }
+.editOptions  { display:none; visibility:hidden; }
+.warningbox   { display:none; visibility:hidden; }
+}}
+</includeonly>

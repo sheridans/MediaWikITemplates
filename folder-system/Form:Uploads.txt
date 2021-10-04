@@ -1,0 +1,20 @@
+<noinclude>
+* This is the "Uploads" Form
+</noinclude><includeonly>{{{info|create title=Uploads|edit title=Uploads}}}
+{{{for template|Uploads}}}
+
+[[{{FULLPAGENAME}}|350px]]
+
+{|
+|-
+| Is a known duplicate identified by:
+| {{{field|Is a known duplicate|input type=dropdown|values=User:{{CURRENTUSER}}|mapping property=UserLN}}} {{#info: If you know this file is a duplicate. Please help us to identify it as such as a database value. }}
+|-
+| Is an duplicate accepted by:
+| {{{field|Is an accepted duplicate|input type=dropdown|values=User:{{CURRENTUSER}}|mapping property=UserLN}}} {{#info: If this file is a duplicate and you know you're ok with it. Let us know by setting this database value to your name.}}
+|}
+
+{{{end template}}}
+
+{{{standard input|save}}} {{{standard input|cancel}}}
+</includeonly>

@@ -1,0 +1,39 @@
+<noinclude>
+* This is the "File Folder" form.
+</noinclude><includeonly>
+{{{for template|File Folder}}}{{{info|page name=<File Folder[Requested New Subpage Basepage]>/<File Folder[Requested New Subpage PageName]>}}}
+{|
+| <small>Base Page</small> {{#info: This is pre-populated and can not be changed. }}
+|
+| <small>New Sub-folder/Sub-page</small> {{#info: This is the only field you have to set. It the name of the new Sub-Page (aka Sub-Folder) you want made for the "Base Page" }}
+|-
+| 
+{| class=zTbl
+| {{#ifexist:{{FULLPAGENAME}}
+|<big>'''{{BASEPAGENAME}}'''</big>
+|{{{field|Requested New Subpage Basepage|input type=text|mandatory|restricted}}}
+}}
+|}
+| <big>'''/'''</big>
+|
+{| class=zTbl
+| {{#ifexist:{{FULLPAGENAME}}|<big>'''{{SUBPAGENAME}}'''</big>|{{{field|Requested New Subpage PageName|input type=text|mandatory}}}}}
+|}
+|}
+----
+'''File Folder Header Text:'''
+{{{field|Has Full Description|input type=textarea|}}}
+----
+{| class="zTbl"
+|-
+! Is Protected: 
+| {{{field|Is Protected|input type=radiobutton|values=Yes,No|default=No|mandatory}}}
+|}
+----
+'''File Folder Footer Text:'''
+{{{field|Has Notes|input type=textarea|}}}
+----
+{{{end template}}}
+
+{{{standard input|save}}} -OR- {{{standard input|cancel}}}
+</includeonly>

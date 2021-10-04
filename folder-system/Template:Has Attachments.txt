@@ -1,0 +1,28 @@
+<noinclude>
+This is the "Has Attachments" template. 
+
+Users can view the source but it should be protected so that only admins can make any changes to it.
+</noinclude><includeonly> {{#vardefine:PagePrefix|{{Mediawiki:ZSitePrefix}}{{PAGEID}}|}}<div class="mw-collapsible mw-collapsed" style="text-align:right;background-image: linear-gradient(to right, rgba(225,225,225,0), rgba(225,225,225,1));border-bottom:1px solid #c0c0c0;">Attachments: {{#ask:[[Category:Uploads]][[~*{{#var:PagePrefix}}-*]]|format=count}}&nbsp;<div class="mw-collapsible-content" style="Display:none;text-align:left;background-color:#f8f8f8;border:1px solid #c0c0c0;padding:18px;">{{#ask:
+[[Category:Uploads]]
+[[~*{{#var:PagePrefix}}-*]]
+|?Modification date#-F[Y-m-d]
+|?Has REVISIONUSER
+|?Media type
+|link=none
+|format=template
+|template=Format Result list item - image user title - Row
+|introtemplate=Format Result list item - image user title - Top
+|outrotemplate=Format Result list item - image user title - Bot
+}}
+----
+Add more attachments to this page using the attachments button below: {{#formlink:form=Has Attachments
+|target={{FULLPAGENAME}}
+|link type=button
+|link text=ADD ATTACHMENTS
+|popup
+|reload
+}}</div></div>
+{{#css:
+.mw-collapsible-toggle.mw-collapsible-toggle-collapsed  { float:right; }
+.mw-collapsible-toggle.mw-collapsible-toggle-default    { float:right; }
+}}</includeonly>

@@ -1,0 +1,164 @@
+<noinclude>
+* This is the "File Folder" template.
+</noinclude><includeonly><div style="display:none;visibility:hidden;"> __NONSHEADER__
+{| class="wikitable"
+! colspan="2" |Infobox
+|-
+! Uses FileFolderPagePrefix
+| [[Uses FileFolderPagePrefix::{{#vardefineecho:PagePrefix|{{{Uses FileFolderPagePrefix|{{MediaWiki:ZSitePrefix}}{{PAGEID}}-}}}}}]]
+|-
+! Page creator
+| {{#show:{{FULLPAGENAME}}|?Page creator}}
+|-
+! Has Parent Page
+| [[Has Parent Page::{{#if:{{NAMESPACE}}|{{NAMESPACE}}:|}}{{BASEPAGENAME}}]]
+|-
+! Has Page Name
+| [[Has SubPage Name::{{SUBPAGENAME}}]]
+|-
+! Is Protected
+| [[Is Protected::{{{Is Protected|}}}]] 
+|-
+! Has Num Of Subpages
+| [[Has Num Of Subpages::{{#ask:[[Category:File Folder]][[Has Parent Page::{{FULLPAGENAME}}]]|format=count}}]]
+|-
+! Has File Folder Size {{#vardefine:HasFileFolderSize|{{#ask:[[Category:Uploads]][[~*{{#var:PagePrefix}}*]]|?Has file size#-|format=sum}}}}
+| [[Has File Folder Size::{{#ifeq:{{#expr:({{#if:{{#var:HasFileFolderSize}}|{{#var:HasFileFolderSize}}|0}})}}|0|0|{{#expr:({{#if:{{#var:HasFileFolderSize}}|{{#var:HasFileFolderSize}}|0}})}}}} KB]]
+|-
+! Has Num Of Files {{#vardefine:HasNumOfFiles|{{#ask:[[Category:Uploads]][[~*{{#var:PagePrefix}}*]]|format=count}}}}
+| [[Has Num Of Files::{{#if:{{#var:HasNumOfFiles}}|{{#var:HasNumOfFiles}}|0}}]]
+|-
+! Has Total Number of Files Within {{#vardefine:HasTotalNumberofFilesWithin|{{#ask:[[Category:File Folder]][[Has Parent Page::~{{FULLPAGENAME}}*]]|?Has Num Of Files#-|format=sum}}}}
+| [[Has Total Number of Files Within::{{#if:{{#var:HasTotalNumberofFilesWithin}}|{{#var:HasTotalNumberofFilesWithin}}|0}}]]
+|-
+! Has Total Number of Files {{#vardefine:HasTotalNumberofFiles|{{#expr:({{#if:{{#var:HasNumOfFiles}}|{{#var:HasNumOfFiles}}|0}}+{{#if:{{#var:HasTotalNumberofFilesWithin}}|{{#var:HasTotalNumberofFilesWithin}}|0}})}}}}
+| [[Has Total Number of Files::{{#if:{{#var:HasTotalNumberofFiles}}|{{#var:HasTotalNumberofFiles}}|0}}]]
+|-
+! Has Total Folder Size {{#vardefine:HasTotalFolderSize|{{#expr:({{#ask:[[Category:File Folder]][[Has Parent Page::~{{FULLPAGENAME}}*]]|?Has File Folder Size#-|format=sum}}+{{#if:{{#var:HasFileFolderSize}}|{{#var:HasFileFolderSize}}|0}})}}}}
+| [[Has Total Folder Size::{{#if: {{#var:HasTotalFolderSize}}|{{#var:HasTotalFolderSize}}|0}} KB]]
+|}</div>
+<div>
+{{#if:{{{Has Full Description|}}}
+| {{H1|About this Folder:|File Folder Header}}
+{{{Has Full Description|}}}
+|
+}}
+<div style="padding-left:2px;">
+{| cellspacing=0 cellpadding=0
+| style="border-bottom:1px solid #f0f0f0;vertical-align:middle;" | <div class="externalimage-holder" style="width:32px;">{{SERVER}}/WikiBlender/Icon-file-folder.png</div>
+| style="border-bottom:1px solid #f0f0f0;vertical-align:middle;padding-left:12px;padding-right:64px;" | '''{{SUBPAGENAME}}'''
+| style="border-bottom:1px solid #f0f0f0;vertical-align:middle;" | {{#show:{{FULLPAGENAME}}|?Has Num Of Subpages}} sub-pages
+|}
+{{#ifeq:{{#ask:[[Category:File Folder]][[Has Parent Page::{{FULLPAGENAME}}]]|format=count}}|0
+| 
+| {{#ask:[[Category:File Folder]][[!Files]][[Has Parent Page::{{FULLPAGENAME}}]]
+|format=template
+|template=File Folder - Parent Result (Row)
+|introtemplate=File Folder - Parent Result (Top)
+|outrotemplate=File Folder - Parent Result (Bot)
+|link=none
+}}
+}}
+:{{#formlink:form=File Folder
+ |link type=button
+ |link text=<div style="float:left;">+&nbsp;&nbsp;/</div><div class="externalimage-holder" style="width:24px;float:left;">{{SERVER}}/WikiBlender/Icon-file-folder.png</div><div style="float:left;">(add a subpage)</div>
+ |query string=File Folder[Requested New Subpage Basepage]={{FULLPAGENAME}}|preload=tbd}}
+</div>
+<br/>
+<div style="padding-left:46px;">
+{{#ifeq:{{{Disable Site Prefix|}}}|Yes
+|
+  {{#ask:[[Category:Uploads]]
+  |?Has file size
+  |?Creation date
+  |?Modification date
+  |?Page author
+  |?MIME Type
+  |?Page creator
+  |?Has Description
+  |?Number of revisions
+  |?Has file ext
+  |format=template
+  |template=PagePrefix - Result Row
+  |introtemplate=PagePrefix - Result Top
+  |outrotemplate=PagePrefix - Result Bot
+  |link=none
+  |limit=25
+  |sort=Modification date
+  |order=desc
+  }}
+|
+{{#ifeq:{{#ask:[[Category:Uploads]][[~*{{#var:PagePrefix}}*]]|format=count}}|0
+| 
+| 
+  {{#ask:[[Category:Uploads]][[~*{{#var:PagePrefix}}*]]
+  |?Has file size
+  |?Creation date
+  |?Modification date
+  |?Page author
+  |?MIME Type
+  |?Page creator
+  |?Has Description
+  |?Number of revisions
+  |?Has file ext
+  |format=template
+  |template=PagePrefix - Result Row
+  |introtemplate=PagePrefix - Result Top
+  |outrotemplate=PagePrefix - Result Bot
+  |userparam={{#var:PagePrefix}}
+  |link=none
+  |limit=200
+  }}
+}}
+}}
+</div>
+
+<div style="padding-left:46px;">
+{{#ifeq:{{{Is Protected|}}}|Yes|{{#ifeq:User:{{CURRENTUSER}}|{{#show:{{FULLPAGENAME}}|?Page creator|link=none}}|{{#vardefine:IsAllowed|Yes}}|{{#vardefine:IsAllowed|No}}}}|{{#vardefine:IsAllowed|Yes}}}}{{#ifeq:{{#var:IsAllowed}}|Yes
+|
+<br/>
+----
+<br/>
+''Use the drop-box below to add files to this File Folder Page''
+{{#ifeq:{{{Disable Site Prefix|}}}|Yes
+|
+{{#batchupload:Uploads|}}
+|
+{{#batchupload:Uploads|+rename= !^({{#var:PagePrefix}}[./+]*)?!iu -->{{#var:PagePrefix}}}}
+}}
+''Note: {{#ifeq:{{{Disable Site Prefix|}}}|Yes
+| This is a Root File Folder and so any files uploaded here will not have the file prefix and you need to mindful of existing files that might have the same filename as what you are uploading.
+| To avoid filename duplications, files uploaded here will be given the prefix "{{#var:PagePrefix}}"''
+}}
+|
+}}
+</div>
+
+</div>
+<br/>
+<br/>
+{{#if:{{{Has Notes|}}}
+| {{H1|Additional Notes:|File Folder Footer}}
+
+{{{Has Notes|}}}
+
+<br/>
+<br/>
+|
+}}
+{{#ifeq:0|{{#ask:[[Category:Uploads]][[Media type::BITMAP]][[~*{{#var:PagePrefix}}*]]|format=count}}
+|| {{H1|Gallery|Display {{#ask:[[Category:Uploads]][[Media type::BITMAP]][[~*{{#var:PagePrefix}}*]]|format=count}} images found in this folder}}{{#ask:[[Category:Uploads]][[Media type::BITMAP]][[~*{{#var:PagePrefix}}*]]|format=gallery}}
+}}
+{{#css:
+#ca-edit { display:none; visibility:hidden; }
+#ca-ve-edit { display:none; visibility:hidden; }
+.externalimage-holder {
+    position: relative;
+}
+.externalimage-holder img {
+    width: 100%;
+    height: auto;
+}
+}}
+[[Category:File Folder]]
+</includeonly>
