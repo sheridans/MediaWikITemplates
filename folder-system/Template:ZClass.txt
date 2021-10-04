@@ -1,0 +1,1 @@
+<includeonly>{{#default_form:{{PAGENAME}}}} and the template [[:Template:{{PAGENAME}}|{{PAGENAME}}]]</includeonly>
